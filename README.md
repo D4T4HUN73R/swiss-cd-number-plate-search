@@ -55,9 +55,21 @@ This tool processes number plate data entirely offline in the browser:
 
 - All processing happens client-side in your browser
 - No external API calls are made
-- No persistent storage is used
+- No persistent storage is used (except for local logging as described below)
 - Input validation and sanitization built-in
 - Complete privacy - no tracking or analytics
+
+## Logging
+
+For analytical purposes, the application can optionally log search queries with additional metadata to a local `.log/cd_searches.log` file. The logging includes:
+
+- Timestamp of search
+- User agent string 
+- IP address
+- Geolocation coordinates (if granted by user)
+- The actual search query in CD BE 001·073 format
+
+This logging is enabled only when the user explicitly grants permission for geolocation and is completely optional. All logs are stored locally on your device and never sent to any server.
 
 ## License
 

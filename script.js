@@ -533,7 +533,7 @@ function searchPlate(plate) {
     showResult(resultText);
     
     // Simulate logging functionality (would send data to server in production)
-    logSearch(firstNum, country);
+    logSearch(firstNum, country, plate);
 }
 
 // Get emoji for country
@@ -700,10 +700,84 @@ function showResult(message, isError = false) {
     }
 }
 
-// Logging function (would send to server in production)
-function logSearch(firstnum, country) {
-    // In a real implementation this would send data to a server for logging
-    console.log(`Search: Rank ${firstnum}, Country: ${country}`);
+// Logging function with IP, user agent, and geolocation
+async function logSearch(firstnum, country, searchQuery) {
+    // Get timestamp 
+    const timestamp = new Date().toISOString();
+    
+    // Get user agent
+    const userAgent = navigator.userAgent;
+    
+    // Get IP address (using a free service)
+    let ipAddress = 'Unable to determine';
+    try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        if (ipResponse.ok) {
+            const ipData = await ipResponse.json();
+            ipAddress = ipData.ip;
+        }
+    } catch (error) {
+        console.warn('Could not retrieve IP address:', error);
+    }
+    
+    // Get geolocation
+    let geoLocation = 'Unable to determine';
+    try {
+        if ('geolocation' in navigator) {
+            const position = await new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject, {
+                    enableHighAccuracy: false,
+                    timeout: 5000,
+                    maximumAge: 300000 // 5 minutes
+                });
+            });
+            
+            geoLocation = `${position.coords.latitude.toFixed(4)}, ${position.coords.longitude.toFixed(4)}`;
+        }
+    } catch (error) {
+        console.warn('Could not retrieve geolocation:', error);
+    }
+    
+    // Format log entry for CSV - this would be sent to server in production
+    const logEntry = {
+        timestamp,
+        userAgent,
+        ipAddress,
+        geoLocation,
+        searchQuery,
+        rank: firstnum,
+        country
+    };
+    
+    // In a real implementation, this would send logEntry to a server endpoint for writing to .log/cd_searches.log in CSV format
+    console.log('Search logged (would be sent to server in production):', logEntry);
+    
+    // For demonstration purposes, we still store locally as CSV-format string 
+    try {
+        const csvHeaders = ['timestamp', 'userAgent', 'ipAddress', 'geoLocation', 'searchQuery', 'rank', 'country'];
+        const csvRow = [
+            logEntry.timestamp,
+            `"${logEntry.userAgent}"`,  // Quote user agent to handle commas
+            logEntry.ipAddress,
+            logEntry.geoLocation,
+            `"${logEntry.searchQuery}"`, // Quote search query to handle spaces
+            logEntry.rank,
+            `"${logEntry.country}"`     // Quote country to handle commas
+        ].join(',');
+        
+        // This would be sent to server endpoint to write to file in production
+        console.log('CSV format (would be written to .log/cd_searches.log):');
+        console.log(csvHeaders.join(','));
+        console.log(csvRow);
+        
+        // Still store locally for demonstration - but this is only for showing how CSV would be generated
+        const logs = JSON.parse(localStorage.getItem('cd_search_logs') || '[]');
+        logs.push(logEntry);
+        localStorage.setItem('cd_search_logs', JSON.stringify(logs));
+        console.log('Log entry stored in localStorage for demo purposes');
+    } catch (error) {
+        console.error('Failed to prepare CSV log entry:', error);
+    }
 }
 
 // Event listeners

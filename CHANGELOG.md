@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Visual ranking system based on diplomatic staff levels
 - Input validation and sanitization
 - Detailed error handling and user feedback
+- Logging of searches with timestamp, user agent, IP address, and geolocation data
 
 ### Changed
 - Improved input field handling with proper navigation and formatting

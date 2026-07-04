@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Logging</title>
+</head>
+<body>
+    <h1>Test Logging Implementation</h1>
+    <p>This page demonstrates how the logging would work in production.</p>
+    <p>In a real deployment, this function would send data to a server which would write it to .log/cd_searches.log</p>
+    
+    <script>
+        // This demonstrates what would happen when search is performed
+        console.log("=== Search Logging Demo ===");
+        
+        // Simulate a search with sample data  
+        const sampleLogEntry = {
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            ipAddress: "192.168.1.100",
+            geoLocation: "47.3769, 8.5417",
+            searchQuery: "CD BE 001·073",
+            rank: 1,
+            country: "Switzerland"
+        };
+        
+        console.log("Sample log entry that would be sent to server:", sampleLogEntry);
+        console.log("Note: Actual file writing in .log/cd_searches.log would happen on server side");
+    </script>
+</body>
+</html>
