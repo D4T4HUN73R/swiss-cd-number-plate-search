@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD Number Plate Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Swiss Corps Diplomatique Number Plate Search</h1>
+            <p style="font-size: 0.9rem;">Search for diplomatic and consular vehicle number plates in Switzerland</p>
+            <div class="disclaimer">Information provided is for educational purposes only. Data may not be accurate or up-to-date. Not suitable for official use.</div>
+        </header>
+
+        <main>
+            <div class="search-box">
+                <div class="input-group">
+                    <div class="plate-display" id="plateTemplate">
+                        <select class="plate-part plate-cd-select" id="cdSelect">
+                            <option value="CD">CD</option>
+                            <option value="CC">CC</option>
+                            <option value="AT">AT</option>
+                        </select>
+                        <div class="plate-part plate-field" contenteditable="true" id="cantonField" data-position="1" maxlength="2">BE</div>
+                        <div class="plate-part plate-field" contenteditable="true" id="firstNumberField" data-position="2" maxlength="3">01</div>
+                        <div class="plate-part plate-dot">·</div>
+                        <div class="plate-part plate-field" contenteditable="true" id="secondNumberField" data-position="3" maxlength="3">73</div>
+                    </div>
+                    <input type="hidden" id="plateInput">
+                </div>
+
+                <button id="searchBtn">Search</button>
+
+                <div id="resultContainer" class="result-container">
+                    <div id="resultContent"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

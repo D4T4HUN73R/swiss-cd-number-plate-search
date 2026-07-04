@@ -1,0 +1,363 @@
+/* Dark mode stylesheet for CD Number Plate Search */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 50px 30px;
+    background-color: #1a2a6c;
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.disclaimer {
+    font-size: 0.8rem;
+    color: #ff0000;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid #ff0000;
+}
+
+.search-box {
+    background-color: rgba(30, 30, 30, 0.85);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+#plateInput {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: #2d2d2d;
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.plate-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    padding: 20px;
+    background-color: rgba(20, 20, 20, 0.7);
+    border-radius: 15px;
+    min-width: auto;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+    .plate-display {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .plate-part {
+        font-size: 1.4rem;
+        min-width: 40px;
+        padding: 8px;
+    }
+    
+    .plate-cd-select {
+        font-size: 1.4rem;
+        padding: 12px 15px;
+        min-width: 50px;
+    }
+    
+    header {
+        padding: 30px 15px;
+    }
+    
+    header h1 {
+        font-size: 2.2rem;
+    }
+}
+
+.plate-part {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-align: center;
+}
+
+.plate-cd-select {
+    background-color: #006400;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    min-width: 70px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    /* Match the height of other fields */
+    height: 60px;
+    line-height: 1.2;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plate-cd-select:hover {
+    background-color: #008000;
+    transform: translateY(-2px);
+}
+
+.plate-field {
+    background-color: white;
+    color: black;
+    padding: 15px 20px;
+    border-radius: 8px;
+    min-width: 80px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.8rem;
+    resize: none;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.plate-field:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.plate-dot {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    min-width: 20px;
+}
+
+.input-group {
+    text-align: center;
+}
+
+#plateInput {
+    width: 100%;
+    max-width: 600px;
+    margin: 25px auto;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: rgba(45, 45, 45, 0.8);
+    color: white;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#plateInput:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+}
+
+.format-hint {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+button {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #4a90e2, #6a11cb);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.6);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.result-container {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    min-height: auto;
+    border: none;
+    display: block;
+}
+
+.result-content {
+    font-size: 1.3rem;
+    line-height: 1.8;
+}
+
+.result-frame {
+    background-color: rgba(30, 30, 30, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+}
+
+.country-result {
+    color: #4a90e2;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(74, 144, 226, 0.15);
+    border-radius: 8px;
+}
+
+.rank-result {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: rgba(74, 144, 226, 0.1);
+    border-radius: 8px;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #888;
+    font-size: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 30px;
+    background: rgba(20, 20, 20, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.prefix-explanation {
+    background-color: rgba(50, 205, 50, 0.1);
+    border: 1px solid #32CD32;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #90ee90;
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(255, 107, 107, 0.1);
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.success-message {
+    color: #51cf66;
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(81, 207, 102, 0.1);
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+}
+
+.loading::after {
+    content: ".";
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: "."; }
+    40% { content: ".."; }
+    60%, 100% { content: "..."; }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .search-box {
+        padding: 20px;
+    }
+}
